@@ -36,14 +36,14 @@ function Table({ partner1, partner2, checks }) {
     <div>
       <div className={s.table}>
         <div className={s.table__top}>
-          <p></p>
-          <p>Общее</p>
-          <p>Кто платил</p>
-          <p>Траты {partner1}</p>
-          <p>Траты {partner2}</p>
-          <p>Другие траты</p>
-          <p>Долг {partner1}</p>
-          <p>Долг {partner2}</p>
+          <p className={s.table__name}></p>
+          <p className={s.table__name}>Общее</p>
+          <p className={s.table__name}>Кто платил</p>
+          <p className={s.table__name}>Траты {partner1}</p>
+          <p className={s.table__name}>Траты {partner2}</p>
+          <p className={s.table__name}>Другие траты</p>
+          <p className={s.table__name}>Долг {partner1}</p>
+          <p className={s.table__name}>Долг {partner2}</p>
         </div>
         {checks.map((check, index) => {
           const initialValue = 0;
@@ -89,13 +89,13 @@ function Table({ partner1, partner2, checks }) {
                 </div>
                 <p>Чек {index + 1}</p>
               </div>
-              <div>{check.total}</div>
-              <div>{check.whoPaid}</div>
-              <div>{onlyPartner1Count}</div>
-              <div>{onlyPartner2Count}</div>
-              <div>{othersCount}</div>
-              <div>{partner1Debt}</div>
-              <div>{partner2Debt}</div>
+              <div className={s.table__value}>{check.total}</div>
+              <div className={s.table__value}>{check.whoPaid}</div>
+              <div className={s.table__value}>{onlyPartner1Count}</div>
+              <div className={s.table__value}>{onlyPartner2Count}</div>
+              <div className={s.table__value}>{othersCount}</div>
+              <div className={s.table__value}>{partner1Debt}</div>
+              <div className={s.table__value}>{partner2Debt}</div>
             </div>
           );
         })}
