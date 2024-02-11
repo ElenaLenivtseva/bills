@@ -1,0 +1,16 @@
+.table {
+    &__top, &__check {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    &__checkName {
+        display: flex;
+        flex-direction: column;
+    }
+    &__checkManage {
+        display: flex;
+    }
+    div {
+        border: 1px solid black;
+    }
+}
