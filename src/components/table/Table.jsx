@@ -100,7 +100,7 @@ function Table({ partner1, partner2, checks }) {
           );
         })}
       </div>
-      {allDebts<0? <p>Долг {partner2} составляет: {Math.abs(allDebts)}</p>:<p>Долг {partner1} составляет: {allDebts}</p>}
+      <p className="table__message">Долг {allDebts<0 ? partner2: partner1} составляет: {Math.abs(allDebts)}</p>
       {/* {allDebt>0?<p>Долг {partner1} составляет: {allDebt}</p> : <p>Долг {partner2} составляет: {+(allDebt)}</p>} */}
     </div>
   );

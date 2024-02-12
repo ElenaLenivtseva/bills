@@ -1,3 +1,8 @@
 .partners {
     margin-bottom: 4rem;
+    &__name {
+        color: rgb(31, 121, 31);
+        font-weight: 700;
+        font-size: 1.5rem;
+    }
 }

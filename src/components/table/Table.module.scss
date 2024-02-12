@@ -22,7 +22,14 @@
         align-items: center;
         text-align: center;
     }
+    &__checkName {
+        border-bottom: 1px solid rgb(31, 121, 31);
+    }
+    &__message {
+       font-size: 1.2rem;
+    }
     div {
-        border: 1px solid black;
+        // border: 1px solid black;
+        border-bottom: 0.3px solid rgb(31, 121, 31);
     }
 }

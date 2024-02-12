@@ -21,8 +21,8 @@ function Partners({partner1,partner2,setPartner1,setPartner2}) {
             </div>
           ) : (
             <div className={s.partners__fields}>
-            <p>{partner1}</p>
-            <p>{partner2}</p>
+            <p className={s.partners__name}>{partner1}</p>
+            <p className={s.partners__name}>{partner2}</p>
             <button onClick={handleStatus}>Редактировать</button>
             </div>
           )}
