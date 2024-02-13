@@ -14,6 +14,16 @@ function Table({ partner1, partner2, checks, handleReset }) {
     `долг ${partner2}`,
   ];
   let allDebts = 0;
+  function handleDelete(checkId)  {
+    // let filteredChecks = checks.map((check)=>{
+    //   if (check[index]==) {
+        
+    //   }
+    //   return (
+
+    //   )
+    // })
+  }
   return (
     <div>
       <button onClick={handleReset}>Очистить таблицу</button>

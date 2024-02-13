@@ -5,6 +5,7 @@ import Table from "../../components/table/Table";
 function Count({ partner1, partner2, disabled, setDisabled }) {
   const [checks, setChecks] = useState([]);
   const initialFormInputs = {
+    id: 0,
     total: 0,
     whoPaid: { partner1 },
     onlyPartner1: "0",
@@ -26,6 +27,7 @@ function Count({ partner1, partner2, disabled, setDisabled }) {
   function handleSubmit(e) {
     e.preventDefault();
     setChecks((array) => (array = [...checks, form]));
+    console.log(checks)
     setFormShow(false);
     setForm(initialFormInputs);
   }

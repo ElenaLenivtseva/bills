@@ -24,7 +24,7 @@ function OpenForm({
                   type="number"
                   placeholder="Итого, общее потраченное"
                   value={form.total}
-                  onChange={(e) => setForm({ ...form, total: e.target.value })}
+                  onChange={(e) => setForm({ ...form, total: e.target.value, id: +(Date.now()) })}
                 />
               </label>
             </p>
