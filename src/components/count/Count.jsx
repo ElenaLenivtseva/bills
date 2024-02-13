@@ -2,7 +2,7 @@ import OpenForm from "../../components/openForm/OpenForm";
 import { useState } from "react";
 import Table from "../../components/table/Table";
 
-function Count({ partner1, partner2 }) {
+function Count({ partner1, partner2, disabled, setDisabled }) {
   const [checks, setChecks] = useState([]);
   const initialFormInputs = {
     total: 0,
@@ -16,13 +16,16 @@ function Count({ partner1, partner2 }) {
 
   function handleClose() {
     setFormShow(false);
+    setForm(initialFormInputs)
   }
+  // function handleClose() {
+  //   setFormShow(false);
+  //   setForm(initialFormInputs)
+  // }
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(form);
     setChecks((array) => (array = [...checks, form]));
-    console.log(checks);
     setFormShow(false);
     setForm(initialFormInputs);
   }
@@ -33,13 +36,21 @@ function Count({ partner1, partner2 }) {
         partner2={partner2}
         handleSubmit={handleSubmit}
         handleClose={handleClose}
+        handleReset={() => setForm(initialFormInputs)}
         form={form}
         setForm={setForm}
         formShow={formShow}
         setFormShow={setFormShow}
         initialFormInputs={initialFormInputs}
+        // setDisabled={setDisabled}
       />
-      <Table partner1={partner1} partner2={partner2} checks={checks}></Table>
+      <Table
+        partner1={partner1}
+        partner2={partner2}
+        checks={checks}
+        handleReset={() => setChecks([])}
+        // setDisabled={setDisabled}
+      ></Table>
     </div>
   );
 }

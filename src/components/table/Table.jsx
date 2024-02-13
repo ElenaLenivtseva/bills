@@ -1,55 +1,8 @@
 import s from "./Table.module.scss";
+import {sumIndividualSpendings, countDebtOfTheCheck, totalDebt} from './tableFunctions.js'
 
 
-function sumIndividualSpendings(partnerOnly) {
-  const initialValue = 0;
-  const onlyPartnerArray = partnerOnly.split(", ");
-  onlyPartnerArray.forEach((element) => {
-    return Number(element);
-  });
-  const onlyPartnerCount = onlyPartnerArray.reduce(
-    (accumulator, currentValue) => accumulator + +currentValue,
-    initialValue
-  );
-  return onlyPartnerCount;
-}
-
-function countDebtOfTheCheck(
-  total,
-  others,
-  onlyPartner1,
-  onlyPartner2,
-  whoPaid,
-  partner1Name,
-) {
-  const common = (total - others - onlyPartner1 - onlyPartner2) / 2;
-  let partner1Debt;
-  let partner2Debt;
-
-  if (whoPaid === partner1Name) {
-    partner1Debt = "не должен";
-    partner2Debt = common + onlyPartner2;
-  } else {
-    partner1Debt = common + onlyPartner1;
-    partner2Debt = "не должен";
-  }
-  return [partner1Debt, partner2Debt];
-}
-function totalDebt(allDebts, partner1Debt, partner2Debt) {
-    let allDebtsCount = allDebts;
-  if (partner1Debt === "не должен") {
-    allDebtsCount = allDebtsCount - partner2Debt;
-  } else {
-    allDebtsCount = allDebtsCount + partner1Debt;
-  }
-  return (
-    allDebtsCount
-  );
-}
-
-
-
-function Table({ partner1, partner2, checks }) {
+function Table({ partner1, partner2, checks, handleReset }) {
   const topTitles = [
     "№ чека",
     "общее",
@@ -63,6 +16,7 @@ function Table({ partner1, partner2, checks }) {
   let allDebts = 0;
   return (
     <div>
+      <button onClick={handleReset}>Очистить таблицу</button>
       <div className={s.table}>
         <div className={s.table__top}>
           {topTitles.map((title) => {
@@ -88,7 +42,7 @@ function Table({ partner1, partner2, checks }) {
           );
           const partner1DebtOfTheCheck = debts[0];
           const partner2DebtOfTheCheck = debts[1];
-          
+
           allDebts = totalDebt(allDebts, partner1DebtOfTheCheck, partner2DebtOfTheCheck);
           
           const contentColumns = [
@@ -110,6 +64,7 @@ function Table({ partner1, partner2, checks }) {
                 </div>
                 <p>Чек {index + 1}</p>
               </div >
+              {/* не правильно использовать индекс, но в данном случае - выход, т.к. item может повториться*/}
               {contentColumns.map((item, i) => {
                 return (
                   <p key={i} className={s.table__value}>
