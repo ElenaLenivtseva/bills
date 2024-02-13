@@ -10,8 +10,6 @@ function Count({ partner1, partner2 }) {
     onlyPartner1: "0",
     onlyPartner2: "0",
     others: "0",
-    // onlyPartner2: [0],
-    // others: [0],
   };
   const [formShow, setFormShow] = useState(false);
   const [form, setForm] = useState(initialFormInputs);
